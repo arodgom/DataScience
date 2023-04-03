@@ -48,10 +48,10 @@ def createTable_notas(cur):
 
 def insertar_edicion(cur):
     try:
-        cur.execute("INSERT INTO edicion VALUES(%s, %s)",
-                     (1, "Uno")
-                     (2, "Dos")
-                     (3, "Tres"))
+        consulta = "INSERT INTO edicion VALUES (%s, %s);"
+        cur.execute(consulta, (1, "Uno"))
+        cur.execute(consulta, (2, "Dos"))
+        cur.execute(consulta, (3, "Tres"))
     except psycopg2.Error as e:
         print("Error al insertar dato: %s" % str(e))
         
@@ -59,15 +59,15 @@ def insertar_edicion(cur):
 
 def insertar_notas(cur):
     try:
-        cur.execute("INSERT INTO notas VALUES(%s, %s, %s, %s, %s)",
-                    (1, "Isabel Maniega", 30, 5.6, 1),
-                    (2, "José Manuel Peña", 30, 7.8, 1),
-                    (3, "Pedro López", 25, 5.2, 2),
-                    (4, "Julia García", 22, 7.3, 1),
-                    (5, "Amparo Mayora", 28, 8.4, 3),
-                    (6, "Juan Martínez", 30, 6.8, 3),
-                    (7, "Fernando López", 35, 6.1, 2),
-                    (8, "María Castro", 41, 5.9, 3))",
+        consulta2 = "INSERT INTO notas VALUES (%s, %s, %s, %s, %s);"
+        cur.execute(consulta2, (1, "Isabel Maniega", 30, 5.6, 1))
+        cur.execute(consulta2, (2, "José Manuel Peña", 30, 7.8, 1))
+        cur.execute(consulta2, (3, "Pedro López", 25, 5.2, 2))
+        cur.execute(consulta2, (4, "Julia García", 22, 7.3, 1))
+        cur.execute(consulta2, (5, "Amparo Mayora", 28, 8.4, 3))
+        cur.execute(consulta2, (6, "Juan Martínez", 30, 6.8, 3))
+        cur.execute(consulta2, (7, "Fernando López", 35, 6.1, 2))
+        cur.execute(consulta2, (8, "María Castro", 41, 5.9, 3))
                      
     except psycopg2.Error as e:
         print("Error al insertar dato: %s" % str(e))
@@ -91,18 +91,6 @@ def eliminar(cur):
         print("Error al eliminar dato: %s" % str(e))
 
 # eliminar(cur)
-
-def mostrar(cur):
-    try:
-        cur.execute("SELECT * FROM notas;")
-        rows = cur.fetchall()
-        for row in rows:
-            print(row)
-    except psycopg2.Error as e:
-        print("Error al mostrar datos: %s" % str(e))
-
-mostrar(cur)
-
 
 conn.commit()
 

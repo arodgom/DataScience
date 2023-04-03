@@ -10,8 +10,8 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_PASSWORD: cursoPython
-      POSTGRES_USER: IsaMan
+      POSTGRES_PASSWORD: ejercicio
+      POSTGRES_USER: arodgom
 
   adminer:
     image: adminer
